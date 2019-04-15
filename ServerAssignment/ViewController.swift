@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         imageView.image = takenImage
-        image = Image(lat: 1, lon: 2, description: "one tttt", attachments: takenImage)
+        image = Image(time: 1, type: "png", location: "./public/easy", attachments: takenImage)
         tryConnect()
     }
     

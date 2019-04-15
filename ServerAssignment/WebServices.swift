@@ -23,19 +23,19 @@ class WebServices {
         //Set body values
         let boundary = "Boundary-\(UUID().uuidString)"
         let param: [String:Any] = ["name": image.name,
-                                   "lat": image.lat ?? 0,
-                                   "lon": image.lon ?? 0,
-                                   "description": image.description ?? ""]
+                                   "time": image.time ?? 0,
+                                   "type": image.type ?? 0,
+                                   "location": image.location ?? ""]
         
         request.setValue("multipart/form-data; boundary=\(boundary)",
             forHTTPHeaderField: "Content-Type")
-        request.addValue("text/plain", forHTTPHeaderField: "Accept")
+        //request.addValue("text/plain", forHTTPHeaderField: "Accept")
         
         request.httpBody = createBody(parameters: param,
                                       boundary: boundary,
                                       data: image.attachments,
                                       mimeType: "image/png",
-                                      name: image.name)
+                                      name: "file")
         //Create URL session
         let task = URLSession.shared.dataTask(with: request){data, response, error in
             if let error = error {
@@ -44,7 +44,7 @@ class WebServices {
             }
             
             if let response = response as? HTTPURLResponse {
-                print("Response: \(response.statusCode)")
+                print("Response: \(response)")
             }
             
             guard let response = response as? HTTPURLResponse else {
@@ -79,7 +79,7 @@ class WebServices {
         }
         
         body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"attachments\"; name=\"\(name)\"\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(name)\"\r\n")
         body.appendString("Content-Type: \(mimeType)\r\n\r\n")
         body.append(data)
         body.appendString("\r\n")

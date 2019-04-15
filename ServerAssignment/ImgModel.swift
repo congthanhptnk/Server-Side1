@@ -11,17 +11,17 @@ import UIKit
 class Image{
     //MARK: Properties
     var name: String
-    var lat: Double?
-    var lon: Double?
-    var description: String?
+    var time: Double?
+    var type: String?
+    var location: String?
     var attachments: Data
     
     //MARK: Initializer
-    init(lat: Double?, lon: Double?, description: String?, attachments: UIImage){
+    init(time: Double?, type: String?, location: String?, attachments: UIImage){
         self.name = Image.generateFilename()
-        self.lat = lat ?? 0
-        self.lon = lon ?? 0
-        self.description = description ?? ""
+        self.time = time ?? 0
+        self.type = type ?? "folder"
+        self.location = location ?? ""
         self.attachments = Image.convertUIImageToData(attachments)
     }
     
@@ -32,6 +32,6 @@ class Image{
     
     static func generateFilename() -> String {
         let currentTime = String(Int(Date().timeIntervalSinceReferenceDate))
-        return "temp_\(currentTime).png"
+        return "temp_\(currentTime)"
     }
 }
