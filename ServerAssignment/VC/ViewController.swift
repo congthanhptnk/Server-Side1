@@ -25,7 +25,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //
 //        present(imagePicker, animated: true, completion: nil)
         
-        tryGetSingle()
+        //tryGetSingle()
+        tryDelete()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -50,9 +51,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func tryGetSingle(){
         let fileGet = FilesGetServices()
-        //fileGet.getSingleFile("5cb4b8fec0a369c56468c9d7")
-        fileGet.test()
+        //fileGet.getSingleFile("5cb4bc084806b6c650fedf12")
         //fileGet.getFilesByFolder(folder: "./public/easy")
+    }
+    
+    private func tryDelete(){
+        let fileDel = FilesDeleteServices()
+        //fileDel.deleteSingle(id: "5cb4bc084806b6c650fedf12")
+        fileDel.deleteAll()
     }
 
 }

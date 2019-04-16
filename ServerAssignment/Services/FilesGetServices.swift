@@ -18,7 +18,6 @@ class FilesGetServices {
         
         var req = URLRequest(url: url)
         req.httpMethod = "GET"
-        req.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = URLSession.shared.dataTask(with: req) {data, response, error in
             if let error = error {
@@ -52,7 +51,6 @@ class FilesGetServices {
         
         var req = URLRequest(url: url)
         req.httpMethod = "GET"
-        req.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = URLSession.shared.dataTask(with: req) {data, response, error in
             if let error = error {
@@ -80,47 +78,11 @@ class FilesGetServices {
     }
     
     func getFilesByFolder(folder: String) {
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded",
-        ]
-        
-        let postData = NSMutableData(data: "location=./public/easy".data(using: String.Encoding.utf8)!)
-        postData.append("&undefined=undefined".data(using: String.Encoding.utf8)!)
-        
         guard let url = URL(string: (self.apiUrl + "/folder")) else {
             fatalError("getSingleFile: failed url")
         }
         
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = postData as Data
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
-            }
-            
-            if let data = data {
-                print(self.parseSingleFile(data))
-                print(String(data: data, encoding: .utf8)!)
-            }
-        })
-        
-        dataTask.resume()
-    }
-    
-    func test() {
-        guard let url = URL(string: (self.apiUrl + "/hoho")) else {
-            fatalError("getSingleFile: failed url")
-        }
-        
-        let postData = NSMutableData(data: "location=./public/easy".data(using: String.Encoding.utf8)!)
+        let postData = NSMutableData(data: "location=\(folder)".data(using: String.Encoding.utf8)!)
         
         var req = URLRequest(url: url)
         req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -145,7 +107,7 @@ class FilesGetServices {
             }
             
             if let data = data {
-                //print(self.parseSingleFile(data))
+                print(self.parseFilesJson(data))
                 print(String(data: data, encoding: .utf8)!)
             }
         }
