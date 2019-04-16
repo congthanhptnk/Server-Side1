@@ -29,6 +29,14 @@ class Image: Decodable{
         }
     }
     
+    init(name: String, time: Double?, location: String?, original: String?) {
+        self.name = name
+        self.time = time ?? 0
+        self.type = "folder"
+        self.location = location
+        self.original = original
+    }
+    
     //MARK: Private methods
     static func convertUIImageToData(_ attachments: UIImage) -> Data{
         return attachments.pngData()!

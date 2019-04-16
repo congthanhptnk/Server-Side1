@@ -26,7 +26,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //        present(imagePicker, animated: true, completion: nil)
         
         //tryGetSingle()
-        tryDelete()
+        //tryDelete()
+        //tryCreateFolder()
+        tryDeleteFolder()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -59,6 +61,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let fileDel = FilesDeleteServices()
         //fileDel.deleteSingle(id: "5cb4bc084806b6c650fedf12")
         fileDel.deleteAll()
+    }
+    
+    private func tryCreateFolder(){
+        let folder = Image(name: "test", time: 123, location: "./public/medium", original: "./public/medium/test")
+        let folderCreate = FolderServices()
+        folderCreate.createFolder(folder: folder)
+    }
+    
+    private func tryDeleteFolder(){
+        let folderDel = FolderServices()
+        folderDel.deleteFolder(folderPath: "./public/medium")
     }
 
 }
