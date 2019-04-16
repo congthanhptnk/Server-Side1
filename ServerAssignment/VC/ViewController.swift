@@ -15,14 +15,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tryGetAll()
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func takeImage(_ sender: Any) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+//        imagePicker =  UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .photoLibrary
+//
+//        present(imagePicker, animated: true, completion: nil)
         
-        present(imagePicker, animated: true, completion: nil)
+        tryGetSingle()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -36,8 +39,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func tryConnect() {
-        let webServices = WebServices()
+        let webServices = UploadService()
         webServices.postImage(image: image!)
+    }
+    
+    private func tryGetAll(){
+        let fileGet = FilesGetServices()
+        fileGet.getAllFiles()
+    }
+    
+    private func tryGetSingle(){
+        let fileGet = FilesGetServices()
+        //fileGet.getSingleFile("5cb4b8fec0a369c56468c9d7")
+        fileGet.test()
+        //fileGet.getFilesByFolder(folder: "./public/easy")
     }
 
 }

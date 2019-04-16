@@ -9,7 +9,7 @@
 import Foundation
 
 class UploadService {
-    private var apiUrl: String = "http://localhost:3000"
+    private var apiUrl: String = StringRes.apiUrl
     
     //MARK: POST photo
     func postImage(image: Image){
@@ -26,14 +26,13 @@ class UploadService {
                                    "time": image.time ?? 0,
                                    "type": image.type ?? 0,
                                    "location": image.location ?? ""]
-        
+    
         request.setValue("multipart/form-data; boundary=\(boundary)",
             forHTTPHeaderField: "Content-Type")
-        //request.addValue("text/plain", forHTTPHeaderField: "Accept")
         
         request.httpBody = createBody(parameters: param,
                                       boundary: boundary,
-                                      data: image.attachments,
+                                      data: image.attachments!,
                                       mimeType: "image/png",
                                       name: "file")
         //Create URL session

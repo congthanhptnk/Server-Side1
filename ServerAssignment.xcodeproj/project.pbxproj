@@ -12,8 +12,10 @@
 		2FC497CF2243BDB600EEF224 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497CD2243BDB600EEF224 /* Main.storyboard */; };
 		2FC497D12243BDB700EEF224 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497D02243BDB700EEF224 /* Assets.xcassets */; };
 		2FC497D42243BDB700EEF224 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497D22243BDB700EEF224 /* LaunchScreen.storyboard */; };
-		2FC497DC2243BEB300EEF224 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497DB2243BEB300EEF224 /* WebServices.swift */; };
+		2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497DB2243BEB300EEF224 /* UploadService.swift */; };
 		2FC497DE2244C7DE00EEF224 /* ImgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497DD2244C7DE00EEF224 /* ImgModel.swift */; };
+		2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E32265B0D800EEF224 /* StringRes.swift */; };
+		2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E52265B22100EEF224 /* FilesGetServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +26,10 @@
 		2FC497D02243BDB700EEF224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC497D32243BDB700EEF224 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FC497D52243BDB700EEF224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FC497DB2243BEB300EEF224 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		2FC497DB2243BEB300EEF224 /* UploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadService.swift; sourceTree = "<group>"; };
 		2FC497DD2244C7DE00EEF224 /* ImgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgModel.swift; sourceTree = "<group>"; };
+		2FC497E32265B0D800EEF224 /* StringRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRes.swift; sourceTree = "<group>"; };
+		2FC497E52265B22100EEF224 /* FilesGetServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesGetServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,34 @@
 		2FC497C82243BDB600EEF224 /* ServerAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				2FC497E22265AF8900EEF224 /* VC */,
+				2FC497E12265AF8000EEF224 /* Services */,
 				2FC497C92243BDB600EEF224 /* AppDelegate.swift */,
-				2FC497CB2243BDB600EEF224 /* ViewController.swift */,
 				2FC497CD2243BDB600EEF224 /* Main.storyboard */,
 				2FC497D02243BDB700EEF224 /* Assets.xcassets */,
 				2FC497D22243BDB700EEF224 /* LaunchScreen.storyboard */,
 				2FC497D52243BDB700EEF224 /* Info.plist */,
-				2FC497DB2243BEB300EEF224 /* WebServices.swift */,
 				2FC497DD2244C7DE00EEF224 /* ImgModel.swift */,
+				2FC497E32265B0D800EEF224 /* StringRes.swift */,
 			);
 			path = ServerAssignment;
+			sourceTree = "<group>";
+		};
+		2FC497E12265AF8000EEF224 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2FC497DB2243BEB300EEF224 /* UploadService.swift */,
+				2FC497E52265B22100EEF224 /* FilesGetServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2FC497E22265AF8900EEF224 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2FC497CB2243BDB600EEF224 /* ViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +165,9 @@
 			files = (
 				2FC497CC2243BDB600EEF224 /* ViewController.swift in Sources */,
 				2FC497CA2243BDB600EEF224 /* AppDelegate.swift in Sources */,
-				2FC497DC2243BEB300EEF224 /* WebServices.swift in Sources */,
+				2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */,
+				2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */,
+				2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */,
 				2FC497DE2244C7DE00EEF224 /* ImgModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,21 +8,25 @@
 
 import UIKit
 
-class Image{
+class Image: Decodable{
     //MARK: Properties
     var name: String
     var time: Double?
     var type: String?
     var location: String?
-    var attachments: Data
+    var attachments: Data?
+    var original: String?
+    var _id: String?
     
     //MARK: Initializer
-    init(time: Double?, type: String?, location: String?, attachments: UIImage){
+    init(time: Double?, type: String?, location: String?, attachments: UIImage?){
         self.name = Image.generateFilename()
         self.time = time ?? 0
         self.type = type ?? "folder"
         self.location = location ?? ""
-        self.attachments = Image.convertUIImageToData(attachments)
+        if let attachments = attachments {
+            self.attachments = Image.convertUIImageToData(attachments)
+        }
     }
     
     //MARK: Private methods
