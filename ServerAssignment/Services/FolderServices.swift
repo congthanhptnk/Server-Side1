@@ -19,8 +19,7 @@ class FolderServices {
         let param: [String:Any] = ["name": folder.name,
                                    "time": folder.time ?? 0,
                                    "type": folder.type ?? "folder",
-                                   "location": folder.location!,
-                                   "folderPath": folder.original!]
+                                   "location": folder.location!]
         //print(param)
         //let jsonData = try? JSONSerialization.data(withJSONObject: param)
         var body = NSMutableData()
@@ -67,7 +66,7 @@ class FolderServices {
             fatalError("createFolder: failed url")
         }
         
-        let postData = NSMutableData(data: "folderPath=\(folderPath)".data(using: String.Encoding.utf8)!)
+        let postData = NSMutableData(data: "location=\(folderPath)".data(using: String.Encoding.utf8)!)
         
         var req = URLRequest(url: url)
         req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
