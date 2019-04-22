@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2FC497CA2243BDB600EEF224 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497C92243BDB600EEF224 /* AppDelegate.swift */; };
-		2FC497CC2243BDB600EEF224 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497CB2243BDB600EEF224 /* ViewController.swift */; };
 		2FC497CF2243BDB600EEF224 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497CD2243BDB600EEF224 /* Main.storyboard */; };
 		2FC497D12243BDB700EEF224 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497D02243BDB700EEF224 /* Assets.xcassets */; };
 		2FC497D42243BDB700EEF224 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC497D22243BDB700EEF224 /* LaunchScreen.storyboard */; };
@@ -18,12 +17,13 @@
 		2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E52265B22100EEF224 /* FilesGetServices.swift */; };
 		2FC497E82266445B00EEF224 /* FilesDeleteServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E72266445B00EEF224 /* FilesDeleteServices.swift */; };
 		2FC497EA2266514E00EEF224 /* FolderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E92266514E00EEF224 /* FolderServices.swift */; };
+		2FC497EC226E5E1600EEF224 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497EB226E5E1600EEF224 /* MainVC.swift */; };
+		2FC497EE226E622B00EEF224 /* MainCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497ED226E622B00EEF224 /* MainCellVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FC497C62243BDB600EEF224 /* ServerAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC497C92243BDB600EEF224 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2FC497CB2243BDB600EEF224 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FC497CE2243BDB600EEF224 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FC497D02243BDB700EEF224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC497D32243BDB700EEF224 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +34,8 @@
 		2FC497E52265B22100EEF224 /* FilesGetServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesGetServices.swift; sourceTree = "<group>"; };
 		2FC497E72266445B00EEF224 /* FilesDeleteServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDeleteServices.swift; sourceTree = "<group>"; };
 		2FC497E92266514E00EEF224 /* FolderServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderServices.swift; sourceTree = "<group>"; };
+		2FC497EB226E5E1600EEF224 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		2FC497ED226E622B00EEF224 /* MainCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 		2FC497E22265AF8900EEF224 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				2FC497CB2243BDB600EEF224 /* ViewController.swift */,
+				2FC497EB226E5E1600EEF224 /* MainVC.swift */,
+				2FC497ED226E622B00EEF224 /* MainCellVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -169,12 +172,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FC497CC2243BDB600EEF224 /* ViewController.swift in Sources */,
 				2FC497CA2243BDB600EEF224 /* AppDelegate.swift in Sources */,
 				2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */,
 				2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */,
 				2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */,
+				2FC497EE226E622B00EEF224 /* MainCellVC.swift in Sources */,
 				2FC497DE2244C7DE00EEF224 /* ImgModel.swift in Sources */,
+				2FC497EC226E5E1600EEF224 /* MainVC.swift in Sources */,
 				2FC497E82266445B00EEF224 /* FilesDeleteServices.swift in Sources */,
 				2FC497EA2266514E00EEF224 /* FolderServices.swift in Sources */,
 			);

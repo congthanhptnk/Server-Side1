@@ -11,7 +11,7 @@ import Foundation
 class FilesGetServices {
     private var apiUrl: String = StringRes.apiUrl + "/files"
     
-    func getAllFiles() {
+    func getAllFiles(result: @escaping ([Image]) -> Void) {
         guard let url = URL(string: (self.apiUrl)) else {
             fatalError("getAllFiles: failed url")
         }
@@ -37,6 +37,9 @@ class FilesGetServices {
             
             if let data = data {
                 print(self.parseFilesJson(data)[0]._id)
+                DispatchQueue.main.async {
+                    result(self.parseFilesJson(data))
+                }
                 //print(String(data: data, encoding: .utf8)!)
             }
         }
@@ -77,7 +80,7 @@ class FilesGetServices {
         task.resume()
     }
     
-    func getFilesByFolder(folder: String) {
+    func getFilesByFolder(folder: String, completion: @escaping ([Image]) -> Void) {
         guard let url = URL(string: (self.apiUrl + "/folder")) else {
             fatalError("getSingleFile: failed url")
         }
@@ -107,8 +110,9 @@ class FilesGetServices {
             }
             
             if let data = data {
-                print(self.parseFilesJson(data))
-                print(String(data: data, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    completion(self.parseFilesJson(data))
+                }
             }
         }
         
