@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,11 +33,70 @@
                             <outlet property="delegate" destination="UIg-GA-rhm" id="Gd8-3s-Bqf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="zMa-cg-PbC"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="zMa-cg-PbC">
+                        <barButtonItem key="rightBarButtonItem" title="Upload" id="lN0-Yx-f4q">
+                            <connections>
+                                <segue destination="VuS-L9-CLS" kind="show" id="5zG-jf-Mkn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNl-to-PMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111" y="14"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WUg-4H-Pet">
+            <objects>
+                <viewController id="VuS-L9-CLS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lHg-bV-bJc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="W8N-zX-QNh">
+                                <rect key="frame" x="8" y="80" width="359" height="359"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="W8N-zX-QNh" secondAttribute="height" multiplier="1:1" id="nFL-ge-jW3"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sMG-mg-Deh">
+                                <rect key="frame" x="8" y="455" width="359" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1e-Tx-M1a">
+                                <rect key="frame" x="8" y="501" width="359" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8qf-ku-4rn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p1e-Tx-M1a" firstAttribute="top" secondItem="sMG-mg-Deh" secondAttribute="bottom" constant="16" id="1Gs-km-7HV"/>
+                            <constraint firstItem="9YP-8m-4zf" firstAttribute="trailing" secondItem="sMG-mg-Deh" secondAttribute="trailing" constant="8" id="9hb-qk-BG9"/>
+                            <constraint firstItem="sMG-mg-Deh" firstAttribute="top" secondItem="W8N-zX-QNh" secondAttribute="bottom" constant="16" id="Htm-qL-2EK"/>
+                            <constraint firstItem="9YP-8m-4zf" firstAttribute="trailing" secondItem="W8N-zX-QNh" secondAttribute="trailing" constant="8" id="Jfp-8V-E8e"/>
+                            <constraint firstItem="sMG-mg-Deh" firstAttribute="leading" secondItem="9YP-8m-4zf" secondAttribute="leading" constant="8" id="NhW-gG-Yg8"/>
+                            <constraint firstItem="W8N-zX-QNh" firstAttribute="leading" secondItem="9YP-8m-4zf" secondAttribute="leading" constant="8" id="P2z-Og-qnr"/>
+                            <constraint firstItem="p1e-Tx-M1a" firstAttribute="leading" secondItem="9YP-8m-4zf" secondAttribute="leading" constant="8" id="PlL-vG-GHJ"/>
+                            <constraint firstItem="9YP-8m-4zf" firstAttribute="trailing" secondItem="p1e-Tx-M1a" secondAttribute="trailing" constant="8" id="fBn-3s-4Gq"/>
+                            <constraint firstItem="W8N-zX-QNh" firstAttribute="top" secondItem="9YP-8m-4zf" secondAttribute="top" constant="16" id="jNW-Rt-g1o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9YP-8m-4zf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l3e-fV-4hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2149" y="18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Jo-KF-MqW">
@@ -55,4 +115,7 @@
             <point key="canvasLocation" x="159" y="14"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="1500" height="1500"/>
+    </resources>
 </document>

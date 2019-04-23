@@ -9,27 +9,23 @@
 import UIKit
 
 class MainVC: UITableViewController {
+    //MARK: Properties
     private var fileList: [Image] = []
     private let service = FilesGetServices()
     private var location: String = ""
     
+    //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if(location.isEmpty) {
-            service.getFilesByFolder(folder: "./public") { (result) in
-                self.fileList = result
-                self.tableView.reloadData()
-            }
+            self.getFiles(location: "./public")
         } else {
-            service.getFilesByFolder(folder: location) { (result) in
-                self.fileList = result
-                self.tableView.reloadData()
-            }
+            self.getFiles(location: location)
         }
     }
     
-    // MARK: - Table view data source
+    //MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -61,6 +57,14 @@ class MainVC: UITableViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         } else {
             print("aint a folder mate")
+        }
+    }
+    
+    //MARK: Private func
+    private func getFiles(location: String){
+        service.getFilesByFolder(folder: location) { (result) in
+            self.fileList = result
+            self.tableView.reloadData()
         }
     }
  
