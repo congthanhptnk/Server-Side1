@@ -17,12 +17,16 @@ class MainVC: UITableViewController {
     //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.openOptions(gesture:)))
+        self.tableView.addGestureRecognizer(longPressRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if(location.isEmpty) {
+            self.navigationItem.title = "public"
             self.getFiles(location: "./public")
         } else {
             self.getFiles(location: location)
@@ -56,9 +60,12 @@ class MainVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(fileList[indexPath.item].type == "folder"){
+        let file = fileList[indexPath.item]
+        if(file.type == "folder"){
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "MyTable") as! MainVC
-            controller.location = fileList[indexPath.item].original!
+            
+            controller.location = file.original!
+            controller.navigationItem.title = file.name
             
             self.navigationController?.pushViewController(controller, animated: true)
         } else {
@@ -71,6 +78,15 @@ class MainVC: UITableViewController {
         service.getFilesByFolder(folder: location) { (result) in
             self.fileList = result
             self.tableView.reloadData()
+        }
+    }
+    
+    @objc func openOptions(gesture: UILongPressGestureRecognizer) {
+        if(gesture.state == UIGestureRecognizer.State.began) {
+            let touchPoint = gesture.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                print("wonderful: \(indexPath)")
+            }
         }
     }
  
