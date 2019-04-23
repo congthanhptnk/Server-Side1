@@ -11,7 +11,7 @@ import Foundation
 class FilesGetServices {
     private var apiUrl: String = StringRes.apiUrl + "/files"
     
-    func getAllFiles(result: @escaping ([Image]) -> Void) {
+    func getAllFiles(result: @escaping ([UserFile]) -> Void) {
         guard let url = URL(string: (self.apiUrl)) else {
             fatalError("getAllFiles: failed url")
         }
@@ -80,7 +80,7 @@ class FilesGetServices {
         task.resume()
     }
     
-    func getFilesByFolder(folder: String, completion: @escaping ([Image]) -> Void) {
+    func getFilesByFolder(folder: String, completion: @escaping ([UserFile]) -> Void) {
         guard let url = URL(string: (self.apiUrl + "/folder")) else {
             fatalError("getSingleFile: failed url")
         }
@@ -119,16 +119,16 @@ class FilesGetServices {
         task.resume()
     }
     
-    private func parseFilesJson(_ data: Data) -> [Image] {
-        guard let allFiles = try? JSONDecoder().decode([Image].self, from: data) else {
+    private func parseFilesJson(_ data: Data) -> [UserFile] {
+        guard let allFiles = try? JSONDecoder().decode([UserFile].self, from: data) else {
             fatalError("Parse json failed")
         }
         
         return allFiles
     }
     
-    private func parseSingleFile(_ data: Data) -> Image {
-        guard let file = try? JSONDecoder().decode(Image.self, from: data) else {
+    private func parseSingleFile(_ data: Data) -> UserFile {
+        guard let file = try? JSONDecoder().decode(UserFile.self, from: data) else {
             fatalError("Parse json failed")
         }
         

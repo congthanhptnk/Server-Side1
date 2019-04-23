@@ -12,7 +12,7 @@ class UploadService {
     private var apiUrl: String = StringRes.apiUrl
     
     //MARK: POST photo
-    func postImage(image: Image){
+    func postImage(image: UserFile){
         guard let url = URL(string: (apiUrl + "/upload")) else{
             fatalError("postImage: unable to init URL")
         }
@@ -24,7 +24,6 @@ class UploadService {
         let boundary = "Boundary-\(UUID().uuidString)"
         let param: [String:Any] = ["name": image.name,
                                    "time": image.time ?? 0,
-                                   "type": image.type ?? 0,
                                    "location": image.location ?? ""]
     
         request.setValue("multipart/form-data; boundary=\(boundary)",

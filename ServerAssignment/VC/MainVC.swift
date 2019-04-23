@@ -10,7 +10,7 @@ import UIKit
 
 class MainVC: UITableViewController {
     //MARK: Properties
-    private var fileList: [Image] = []
+    private var fileList: [UserFile] = []
     private let service = FilesGetServices()
     private var location: String = ""
     

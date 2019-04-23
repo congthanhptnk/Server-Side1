@@ -11,13 +11,13 @@ import Foundation
 class FolderServices {
     private var apiUrl: String = StringRes.apiUrl + "/folders"
     
-    func createFolder(folder: Image) {
+    func createFolder(folder: UserFile) {
         guard let url = URL(string: (self.apiUrl)) else {
             fatalError("createFolder: failed url")
         }
         
         let param: [String:Any] = ["name": folder.name,
-                                   "time": folder.time ?? 0,
+                                   "time": folder.time,
                                    "type": folder.type ?? "folder",
                                    "location": folder.location!]
         //print(param)

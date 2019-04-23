@@ -8,10 +8,10 @@
 
 import UIKit
 
-class Image: Decodable{
+class UserFile: Decodable{
     //MARK: Properties
     var name: String
-    var time: Double?
+    var time: Int
     var type: String?
     var location: String?
     var attachments: Data?
@@ -19,22 +19,22 @@ class Image: Decodable{
     var _id: String?
     
     //MARK: Initializer
-    init(time: Double?, type: String?, location: String?, attachments: UIImage?){
-        self.name = Image.generateFilename()
-        self.time = time ?? 0
-        self.type = type ?? "folder"
+    //File init
+    init(name: String, location: String?, attachments: UIImage?){
+        self.time = Int((Date().timeIntervalSinceReferenceDate))
+        self.name = UserFile.generateFilename(name: name, time: self.time)
         self.location = location ?? ""
+        
         if let attachments = attachments {
-            self.attachments = Image.convertUIImageToData(attachments)
+            self.attachments = UserFile.convertUIImageToData(attachments)
         }
     }
     
-    init(name: String, time: Double?, location: String?, original: String?) {
+    //Folder init
+    init(name: String, time: Int, location: String?) {
         self.name = name
-        self.time = time ?? 0
-        self.type = "folder"
-        self.location = location
-        self.original = original
+        self.time = Int((Date().timeIntervalSinceReferenceDate))
+        self.location = location ?? ""
     }
     
     //MARK: Private methods
@@ -42,8 +42,7 @@ class Image: Decodable{
         return attachments.pngData()!
     }
     
-    static func generateFilename() -> String {
-        let currentTime = String(Int(Date().timeIntervalSinceReferenceDate))
-        return "temp_\(currentTime)"
+    static func generateFilename(name: String, time: Int) -> String {
+        return "\(time)_\(name)"
     }
 }
