@@ -85,9 +85,10 @@ class MainVC: UITableViewController {
         if(gesture.state == UIGestureRecognizer.State.began) {
             let touchPoint = gesture.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                print("wonderful: \(indexPath)")
+                let curFile = fileList[indexPath.row]
+                
                 let actionSheets = ActionSheets()
-                actionSheets.displayActionSheet(vc: self)
+                actionSheets.displayActionSheet(vc: self, file: curFile)
             }
         }
     }

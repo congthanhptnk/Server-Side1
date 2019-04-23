@@ -9,14 +9,23 @@
 import UIKit
 
 class ActionSheets {
-    func displayActionSheet(vc: UIViewController) {
+    private var file: UserFile?
+    
+    func displayActionSheet(vc: UIViewController, file: UserFile) {
+        self.file = file
+        
         let actionSheet = UIAlertController(title: "Options", message: "Choose an option", preferredStyle: .actionSheet)
-        setup(actionSheet)
+        
+        if(self.file?.type == "folder"){
+            setupFolder(actionSheet)
+        } else {
+            setupFile(actionSheet)
+        }
         
         vc.present(actionSheet, animated: true, completion: nil)
     }
     
-    private func setup(_ actionSheet: UIAlertController){
+    private func setupFile(_ actionSheet: UIAlertController){
         let copyOpt = UIAlertAction(title: "Copy", style: .default) { (alert: UIAlertAction!) in
             print("option")
         }
@@ -26,13 +35,26 @@ class ActionSheets {
         }
         
         let deleteOpt = UIAlertAction(title: "Delete", style: .default) { (alert: UIAlertAction) in
-            print("delete")
+            let delService = FilesDeleteServices()
+            delService.deleteSingle(id: (self.file?._id)!)
         }
         
         let cancelOpt = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         actionSheet.addAction(copyOpt)
         actionSheet.addAction(moveOpt)
+        actionSheet.addAction(deleteOpt)
+        actionSheet.addAction(cancelOpt)
+    }
+    
+    private func setupFolder(_ actionSheet: UIAlertController){
+        let deleteOpt = UIAlertAction(title: "Delete", style: .default) { (alert: UIAlertAction) in
+            let delService = FolderServices()
+            delService.deleteFolder(folderPath: (self.file?.original)!)
+        }
+        
+        let cancelOpt = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         actionSheet.addAction(deleteOpt)
         actionSheet.addAction(cancelOpt)
     }
