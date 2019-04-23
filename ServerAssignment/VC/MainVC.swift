@@ -17,12 +17,18 @@ class MainVC: UITableViewController {
     //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if(location.isEmpty) {
             self.getFiles(location: "./public")
         } else {
             self.getFiles(location: location)
         }
+        
+        self.tableView.reloadData()
     }
     
     //MARK: Table view data source

@@ -19,6 +19,7 @@
 		2FC497EA2266514E00EEF224 /* FolderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497E92266514E00EEF224 /* FolderServices.swift */; };
 		2FC497EC226E5E1600EEF224 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497EB226E5E1600EEF224 /* MainVC.swift */; };
 		2FC497EE226E622B00EEF224 /* MainCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497ED226E622B00EEF224 /* MainCellVC.swift */; };
+		2FC497F0226F9E6E00EEF224 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497EF226F9E6E00EEF224 /* UploadVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2FC497E92266514E00EEF224 /* FolderServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderServices.swift; sourceTree = "<group>"; };
 		2FC497EB226E5E1600EEF224 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		2FC497ED226E622B00EEF224 /* MainCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellVC.swift; sourceTree = "<group>"; };
+		2FC497EF226F9E6E00EEF224 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				2FC497EB226E5E1600EEF224 /* MainVC.swift */,
 				2FC497ED226E622B00EEF224 /* MainCellVC.swift */,
+				2FC497EF226F9E6E00EEF224 /* UploadVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				2FC497CA2243BDB600EEF224 /* AppDelegate.swift in Sources */,
 				2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */,
 				2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */,
+				2FC497F0226F9E6E00EEF224 /* UploadVC.swift in Sources */,
 				2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */,
 				2FC497EE226E622B00EEF224 /* MainCellVC.swift in Sources */,
 				2FC497DE2244C7DE00EEF224 /* ImgModel.swift in Sources */,

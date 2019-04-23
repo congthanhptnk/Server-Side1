@@ -23,7 +23,8 @@ class UserFile: Decodable{
     init(name: String, location: String?, attachments: UIImage?){
         self.time = Int((Date().timeIntervalSinceReferenceDate))
         self.name = UserFile.generateFilename(name: name, time: self.time)
-        self.location = location ?? ""
+        self.location = location ?? "./public"
+        self.type = "png"
         
         if let attachments = attachments {
             self.attachments = UserFile.convertUIImageToData(attachments)
@@ -33,8 +34,9 @@ class UserFile: Decodable{
     //Folder init
     init(name: String, time: Int, location: String?) {
         self.name = name
+        self.type = "folder"
         self.time = Int((Date().timeIntervalSinceReferenceDate))
-        self.location = location ?? ""
+        self.location = location ?? "./public"
     }
     
     //MARK: Private methods
@@ -43,6 +45,7 @@ class UserFile: Decodable{
     }
     
     static func generateFilename(name: String, time: Int) -> String {
-        return "\(time)_\(name)"
+        //return "\(time)_\(name)" //for other uses
+        return "\(name)"
     }
 }

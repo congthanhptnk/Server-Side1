@@ -12,7 +12,7 @@ class UploadService {
     private var apiUrl: String = StringRes.apiUrl
     
     //MARK: POST photo
-    func postImage(image: UserFile){
+    func postImage(image: UserFile, result: @escaping (UserFile) -> Void){
         guard let url = URL(string: (apiUrl + "/upload")) else{
             fatalError("postImage: unable to init URL")
         }
@@ -23,7 +23,8 @@ class UploadService {
         //Set body values
         let boundary = "Boundary-\(UUID().uuidString)"
         let param: [String:Any] = ["name": image.name,
-                                   "time": image.time ?? 0,
+                                   "time": image.time,
+                                   "type": image.type ?? "png",
                                    "location": image.location ?? ""]
     
         request.setValue("multipart/form-data; boundary=\(boundary)",
@@ -57,6 +58,9 @@ class UploadService {
             
             if let data = data {
                 print("YEEEEET" + String(data: data, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    result(self.parseSingleFile(data))
+                }
             }
         }
         task.resume()
@@ -84,6 +88,14 @@ class UploadService {
         body.appendString("--".appending(boundary.appending("--")))
         
         return body as Data
+    }
+    
+    private func parseSingleFile(_ data: Data) -> UserFile {
+        guard let file = try? JSONDecoder().decode(UserFile.self, from: data) else {
+            fatalError("Parse json failed")
+        }
+        
+        return file
     }
 }
 extension NSMutableData {
