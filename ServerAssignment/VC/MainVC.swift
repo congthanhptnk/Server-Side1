@@ -86,6 +86,8 @@ class MainVC: UITableViewController {
             let touchPoint = gesture.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 print("wonderful: \(indexPath)")
+                let actionSheets = ActionSheets()
+                actionSheets.displayActionSheet(vc: self)
             }
         }
     }

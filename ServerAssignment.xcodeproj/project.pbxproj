@@ -20,6 +20,7 @@
 		2FC497EC226E5E1600EEF224 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497EB226E5E1600EEF224 /* MainVC.swift */; };
 		2FC497EE226E622B00EEF224 /* MainCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497ED226E622B00EEF224 /* MainCellVC.swift */; };
 		2FC497F0226F9E6E00EEF224 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497EF226F9E6E00EEF224 /* UploadVC.swift */; };
+		2FC497F3226FBFF100EEF224 /* ActionSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497F2226FBFF100EEF224 /* ActionSheets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2FC497EB226E5E1600EEF224 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		2FC497ED226E622B00EEF224 /* MainCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellVC.swift; sourceTree = "<group>"; };
 		2FC497EF226F9E6E00EEF224 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		2FC497F2226FBFF100EEF224 /* ActionSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		2FC497C82243BDB600EEF224 /* ServerAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				2FC497F1226FBFC100EEF224 /* Utilities */,
 				2FC497E22265AF8900EEF224 /* VC */,
 				2FC497E12265AF8000EEF224 /* Services */,
 				2FC497C92243BDB600EEF224 /* AppDelegate.swift */,
@@ -102,6 +105,14 @@
 				2FC497EF226F9E6E00EEF224 /* UploadVC.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		2FC497F1226FBFC100EEF224 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2FC497F2226FBFF100EEF224 /* ActionSheets.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 			files = (
 				2FC497CA2243BDB600EEF224 /* AppDelegate.swift in Sources */,
 				2FC497E62265B22100EEF224 /* FilesGetServices.swift in Sources */,
+				2FC497F3226FBFF100EEF224 /* ActionSheets.swift in Sources */,
 				2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */,
 				2FC497F0226F9E6E00EEF224 /* UploadVC.swift in Sources */,
 				2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */,
