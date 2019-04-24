@@ -10,9 +10,11 @@ import UIKit
 
 class ActionSheets {
     private var file: UserFile?
+    private var vc: UITableViewController?
     
-    func displayActionSheet(vc: UIViewController, file: UserFile) {
+    func displayActionSheet(vc: UITableViewController, file: UserFile) {
         self.file = file
+        self.vc = vc
         
         let actionSheet = UIAlertController(title: "Options", message: "Choose an option", preferredStyle: .actionSheet)
         
@@ -22,7 +24,7 @@ class ActionSheets {
             setupFile(actionSheet)
         }
         
-        vc.present(actionSheet, animated: true, completion: nil)
+        self.vc!.present(actionSheet, animated: true, completion: nil)
     }
     
     private func setupFile(_ actionSheet: UIAlertController){
@@ -31,7 +33,11 @@ class ActionSheets {
         }
         
         let moveOpt = UIAlertAction(title: "Move", style: .default) { (alert: UIAlertAction) in
-            print("move")
+            let controller = self.vc!.storyboard!.instantiateViewController(withIdentifier: "FileMover") as! FileMoverVC
+            controller.oldFile = self.file
+            let navVC = UINavigationController(rootViewController: controller)
+            
+            self.vc?.present(navVC, animated: true, completion: nil)
         }
         
         let deleteOpt = UIAlertAction(title: "Delete", style: .default) { (alert: UIAlertAction) in

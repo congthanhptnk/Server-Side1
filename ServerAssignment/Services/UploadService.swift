@@ -100,6 +100,7 @@ class UploadService {
 }
 extension NSMutableData {
     func appendString(_ string: String) {
+        print("YAYAYAYAYA")
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
         append(data!)
     }
