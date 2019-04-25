@@ -34,12 +34,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="zMa-cg-PbC">
-                        <barButtonItem key="rightBarButtonItem" title="Upload" id="lN0-Yx-f4q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lN0-Yx-f4q">
                             <connections>
-                                <segue destination="ss0-21-bAa" kind="presentation" id="yYx-ae-ws5"/>
+                                <action selector="postOptions:" destination="UIg-GA-rhm" id="jgf-3k-AJT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ss0-21-bAa" kind="show" identifier="uploadSegue" id="FOd-rp-SNi"/>
+                        <segue destination="UkL-E2-eIE" kind="show" identifier="createFolderSegue" id="BYr-2l-laN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNl-to-PMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,6 +171,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJ8-35-UuG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="159" y="14"/>
+        </scene>
+        <!--New FolderVC-->
+        <scene sceneID="hpn-5M-TvG">
+            <objects>
+                <viewController id="UkL-E2-eIE" customClass="NewFolderVC" customModule="ServerAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g9a-by-Hye">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter folder name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0WE-eX-2eU">
+                                <rect key="frame" x="16" y="134" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1DL-Ll-IbE"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97g-lc-G0C">
+                                <rect key="frame" x="100" y="190" width="175" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="UkL-E2-eIE" eventType="touchUpInside" id="Qie-Kj-LCX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0WE-eX-2eU" firstAttribute="leading" secondItem="rZ5-Au-6pu" secondAttribute="leading" constant="16" id="FH2-5b-twQ"/>
+                            <constraint firstItem="0WE-eX-2eU" firstAttribute="top" secondItem="rZ5-Au-6pu" secondAttribute="top" constant="70" id="Iha-aF-WKN"/>
+                            <constraint firstItem="0WE-eX-2eU" firstAttribute="leading" secondItem="rZ5-Au-6pu" secondAttribute="leading" constant="16" id="NgP-Sk-tYa"/>
+                            <constraint firstItem="rZ5-Au-6pu" firstAttribute="trailing" secondItem="0WE-eX-2eU" secondAttribute="trailing" constant="16" id="Phg-U6-p6P"/>
+                            <constraint firstItem="97g-lc-G0C" firstAttribute="top" secondItem="0WE-eX-2eU" secondAttribute="bottom" constant="16" id="V9w-es-e20"/>
+                            <constraint firstItem="rZ5-Au-6pu" firstAttribute="trailing" secondItem="97g-lc-G0C" secondAttribute="trailing" constant="100" id="VEN-XI-xHd"/>
+                            <constraint firstItem="rZ5-Au-6pu" firstAttribute="trailing" secondItem="0WE-eX-2eU" secondAttribute="trailing" constant="16" id="lyY-K3-CjK"/>
+                            <constraint firstItem="97g-lc-G0C" firstAttribute="leading" secondItem="rZ5-Au-6pu" secondAttribute="leading" constant="100" id="tlI-ch-Fbx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rZ5-Au-6pu"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="0WE-eX-2eU" id="gU4-N5-8h2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LyT-0l-NjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2326" y="-669"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T0l-cN-Pka">

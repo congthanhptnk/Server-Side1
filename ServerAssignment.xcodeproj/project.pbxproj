@@ -23,6 +23,7 @@
 		2FC497F3226FBFF100EEF224 /* ActionSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497F2226FBFF100EEF224 /* ActionSheets.swift */; };
 		2FC497F52270867C00EEF224 /* FileMoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497F42270867C00EEF224 /* FileMoverVC.swift */; };
 		2FC497F72270913F00EEF224 /* FileMoverServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497F62270913F00EEF224 /* FileMoverServices.swift */; };
+		2FC497F92271D1FE00EEF224 /* NewFolderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC497F82271D1FE00EEF224 /* NewFolderVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2FC497F2226FBFF100EEF224 /* ActionSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheets.swift; sourceTree = "<group>"; };
 		2FC497F42270867C00EEF224 /* FileMoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMoverVC.swift; sourceTree = "<group>"; };
 		2FC497F62270913F00EEF224 /* FileMoverServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMoverServices.swift; sourceTree = "<group>"; };
+		2FC497F82271D1FE00EEF224 /* NewFolderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2FC497ED226E622B00EEF224 /* MainCellVC.swift */,
 				2FC497EF226F9E6E00EEF224 /* UploadVC.swift */,
 				2FC497F42270867C00EEF224 /* FileMoverVC.swift */,
+				2FC497F82271D1FE00EEF224 /* NewFolderVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				2FC497F3226FBFF100EEF224 /* ActionSheets.swift in Sources */,
 				2FC497E42265B0D800EEF224 /* StringRes.swift in Sources */,
 				2FC497F0226F9E6E00EEF224 /* UploadVC.swift in Sources */,
+				2FC497F92271D1FE00EEF224 /* NewFolderVC.swift in Sources */,
 				2FC497DC2243BEB300EEF224 /* UploadService.swift in Sources */,
 				2FC497F72270913F00EEF224 /* FileMoverServices.swift in Sources */,
 				2FC497F52270867C00EEF224 /* FileMoverVC.swift in Sources */,

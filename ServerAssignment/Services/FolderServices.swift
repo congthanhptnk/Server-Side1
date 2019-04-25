@@ -11,17 +11,16 @@ import Foundation
 class FolderServices {
     private var apiUrl: String = StringRes.apiUrl + "/folders"
     
-    func createFolder(folder: UserFile) {
+    func createFolder(name: String, location: String, complete: @escaping (Bool) -> Void) {
         guard let url = URL(string: (self.apiUrl)) else {
             fatalError("createFolder: failed url")
         }
+        print(location)
         
-        let param: [String:Any] = ["name": folder.name,
-                                   "time": folder.time,
-                                   "type": folder.type ?? "folder",
-                                   "location": folder.location!]
-        //print(param)
-        //let jsonData = try? JSONSerialization.data(withJSONObject: param)
+        let param: [String:Any] = ["name": name,
+                                   "time": "123",
+                                   "location": location]
+        
         var body = NSMutableData()
         for(key, value) in param {
             if(key == "name") {
@@ -53,8 +52,10 @@ class FolderServices {
             }
             
             if let data = data {
-                //print(self.parseFilesJson(data)[0]._id)
                 print(String(data: data, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    complete(true)
+                }
             }
         }
         

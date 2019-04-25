@@ -36,7 +36,6 @@ class FilesGetServices {
             }
             
             if let data = data {
-                print(self.parseFilesJson(data)[0]._id)
                 DispatchQueue.main.async {
                     result(self.parseFilesJson(data))
                 }

@@ -57,7 +57,6 @@ class UploadService {
             }
             
             if let data = data {
-                print("YEEEEET" + String(data: data, encoding: .utf8)!)
                 DispatchQueue.main.async {
                     result(self.parseSingleFile(data))
                 }
@@ -100,7 +99,6 @@ class UploadService {
 }
 extension NSMutableData {
     func appendString(_ string: String) {
-        print("YAYAYAYAYA")
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
         append(data!)
     }

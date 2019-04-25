@@ -34,10 +34,6 @@ class FilesDeleteServices {
                 print(response.statusCode)
                 return
             }
-            
-            if let data = data {
-                print(String(data: data, encoding: .utf8)!)
-            }
         }
         
         task.resume()
@@ -65,10 +61,6 @@ class FilesDeleteServices {
             guard (200...299).contains(response.statusCode) else {
                 print(response.statusCode)
                 return
-            }
-            
-            if let data = data {
-                print(String(data: data, encoding: .utf8)!)
             }
         }
         

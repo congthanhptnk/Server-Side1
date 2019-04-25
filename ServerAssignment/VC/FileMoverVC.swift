@@ -17,10 +17,6 @@ class FileMoverVC: UITableViewController {
     //MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(self.oldFile?.location)
-        print(self.location)
-        print(self.oldFile?.original)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,10 +85,12 @@ class FileMoverVC: UITableViewController {
     
     @IBAction func save(_ sender: Any) {
         let service = FileMoverServices()
-        print(self.oldFile?.location)
-        print(self.location)
-        print(self.oldFile?.original)
-        service.moveFile(oldLoc: (self.oldFile?.location)!, newLoc: location, original: (self.oldFile?.original)!)
+        
+        service.moveFile(oldLoc: (self.oldFile?.location)!, newLoc: location, original: (self.oldFile?.original)!) { complete in
+            if(complete) {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     

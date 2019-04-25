@@ -11,7 +11,7 @@ import Foundation
 class FileMoverServices {
     private var apiUrl: String = StringRes.apiUrl + "/files"
     
-    func moveFile(oldLoc: String, newLoc: String, original: String) {
+    func moveFile(oldLoc: String, newLoc: String, original: String, complete: @escaping (Bool) -> Void) {
         guard let url = URL(string: (self.apiUrl + "/move")) else {
             fatalError("moveFile: failed url")
         }
@@ -53,6 +53,9 @@ class FileMoverServices {
             if let data = data {
                 //print(self.parseFilesJson(data)[0]._id)
                 print(String(data: data, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    complete(true)
+                }
             }
         }
         

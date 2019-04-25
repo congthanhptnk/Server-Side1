@@ -12,6 +12,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     //MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
+    var location: String!
     
     
     //MARK: Init
@@ -22,6 +23,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         imageView.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print(location)
     }
     
     @objc func takeImage(gesture: UIGestureRecognizer) {
@@ -38,7 +45,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let name = textField.text ?? "temp"
         let file = self.imageView.image
         
-        let fileData = UserFile(name: name, location: nil, attachments: file)
+        let fileData = UserFile(name: name, location: self.location, attachments: file)
         
         let service = UploadService()
         service.postImage(image: fileData) { result in

@@ -12,7 +12,7 @@ class MainVC: UITableViewController {
     //MARK: Properties
     private var fileList: [UserFile] = []
     private let service = FilesGetServices()
-    private var location: String = ""
+    private var location: String = "./public"
     
     //MARK: Init
     override func viewDidLoad() {
@@ -20,30 +20,25 @@ class MainVC: UITableViewController {
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.openOptions(gesture:)))
         self.tableView.addGestureRecognizer(longPressRecognizer)
+        
+        if(location == "./public"){
+            self.navigationItem.title = "Home"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if(location.isEmpty) {
-            self.navigationItem.title = "public"
-            self.getFiles(location: "./public")
-        } else {
-            self.getFiles(location: location)
-        }
-        
-        self.tableView.reloadData()
+        self.getFiles(location: location)
     }
     
     //MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.fileList.count
     }
 
@@ -69,7 +64,9 @@ class MainVC: UITableViewController {
             
             self.navigationController?.pushViewController(controller, animated: true)
         } else {
-            print("aint a folder mate")
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.onFileClick(file: file)
+            
         }
     }
     
@@ -79,6 +76,28 @@ class MainVC: UITableViewController {
             self.fileList = result
             self.tableView.reloadData()
         }
+    }
+    
+    @IBAction func postOptions(_ sender: Any) {
+        displayPostOptions()
+    }
+    
+    private func displayPostOptions(){
+        let alert = UIAlertController(title: "Options", message: "", preferredStyle: .alert)
+        
+        let uploadFile = UIAlertAction(title: "Upload file", style: .default) { (alert) in
+            self.performSegue(withIdentifier: "uploadSegue", sender: nil)
+        }
+        let createFolder = UIAlertAction(title: "New folder", style: .default) { (alert) in
+            self.performSegue(withIdentifier: "createFolderSegue", sender: nil)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(uploadFile)
+        alert.addAction(createFolder)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func openOptions(gesture: UILongPressGestureRecognizer) {
@@ -92,51 +111,35 @@ class MainVC: UITableViewController {
             }
         }
     }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    private func onFileClick(file: UserFile) {
+        let alert = UIAlertController(title: "File Clicked", message: "You've clicked: \(file.name) at \(file.location!)", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "uploadSegue" {
+            guard let nav = segue.destination as? UINavigationController else {
+                fatalError("Destination not navcontroller")
+            }
+            guard let vc = nav.topViewController as? UploadVC else {
+                fatalError("TopView not Upload")
+            }
+            
+            vc.location = self.location
+        } else if (segue.identifier == "createFolderSegue") {
+            guard let folderVC = segue.destination as? NewFolderVC else {
+                fatalError("This is not newFolderVC")
+            }
+            
+            folderVC.location = self.location
+        }
     }
-    */
+    
 
 }
